@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class UserControl
+ * Servlet implementation class reporterControl
  */
-@WebServlet("/UserControl")
-public class UserControl extends HttpServlet {
+@WebServlet("/phongvien")
+public class reporterControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserControl() {
+    public reporterControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,26 +27,30 @@ public class UserControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 String page = request.getParameter("page");
-	        if (page == null) page = "home";
+		String page = request.getParameter("page");
+        if (page == null) page = "home";
 
-	        String file;
-	        switch (page) {
-	            case "vanhoa":  file = "Vanhoa.jsp"; break;
-	            case "thethao": file = "Thethao.jsp"; break;
-	            case "suckhoe": file = "Suckhoe.jsp"; break;
-	            case "chinhtri":file = "Chinhtri.jsp"; break;
-	            case "dulich":  file = "Dulich.jsp"; break;
-	            case "doisong":  file = "DoiSong.jsp"; break;
-	            case "giaoduc":  file = "Giaoduc.jsp"; break;
-	            case "congnghe":  file = "Congnghe.jsp"; break;
-	            default:        file = "Home.jsp";
-	        }
+        String file;
+        switch (page) {
+            case "Thongtin":
+                file = "Thongtin.jsp";
+                break;
+            case "Baiviet":
+                file = "baiviet.jsp";
+                break;
+            case "Dangtin":
+                file = "Dangtin.jsp";
+                break;
+            case "Thongke":
+                file = "Thongke.jsp";
+                break;
+            default:
+                file = "Thongtin.jsp"; // 👉 đổi tên khác thay vì Home.jsp để tránh vòng lặp
+        }
 
-	        // Gửi tên file sang JSP chính
-	        request.setAttribute("contentPage", file);
-	        request.getRequestDispatcher("/manager/Reader.jsp").forward(request, response);
-
+       
+        request.setAttribute("contentPage", file);
+        request.getRequestDispatcher("Reporter/PhongvienPage.jsp").forward(request, response);
 	}
 
 	/**

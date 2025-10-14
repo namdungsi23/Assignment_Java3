@@ -59,6 +59,12 @@
 		<li><a
 			href="${pageContext.request.contextPath}/UserControl?page=dulich">Du
 				lịch</a></li>
+	<li><a
+			href="${pageContext.request.contextPath}/UserControl?page=doisong">Đời sống</a></li>
+	<li><a
+			href="${pageContext.request.contextPath}/UserControl?page=giaoduc">Giáo dục</a></li>
+	<li><a
+			href="${pageContext.request.contextPath}/UserControl?page=congnghe">Công nghệ</a></li>
 	</ul>
 
 

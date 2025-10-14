@@ -19,6 +19,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  
+  <servlet>
+    <description></description>
+    <display-name>JDBC</display-name>
+    <servlet-name>JDBC</servlet-name>
+    <servlet-class>utils.JDBC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JDBC</servlet-name>
+    <url-pattern>/JDBC</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>reporterControl</display-name>
+    <servlet-name>reporterControl</servlet-name>
+    <servlet-class>views.reporterControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>reporterControl</servlet-name>
+    <url-pattern>/reporterControl</url-pattern>
+  </servlet-mapping>
 </web-app>

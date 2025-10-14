@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Insert title here</title>
 </head>
 <body>
-
+<h1>Đời sống</h1>
 </body>
 </html>

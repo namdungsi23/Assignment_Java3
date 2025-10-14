@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Trang quản lí</title>
+<title>Trang phóng viên</title>
 </head>
 <body>
 <style>
@@ -92,11 +92,11 @@
 		</div>
 	</div>
     <div class="menu">
-    <a href="<%= request.getContextPath() %>/AdminControl?page=home">Quản lý chung</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=tintuc"> Quản lý Tin tức</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=Loaitin"> Quản lý Loại tin</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung"> Quản lý Người dùng</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=Newsletter"> Quản lý Newsletter</a>
+    <a href="<%= request.getContextPath() %>/phongvien?page=Thongtin">Thông tin PV</a> 
+    <a href="<%= request.getContextPath() %>/phongvien?page=Baiviet"> Quản lý bài viết</a> 
+    <a href="<%= request.getContextPath() %>/phongvien?page=Dangtin"> Đăng báo</a> 
+    <a href="<%= request.getContextPath() %>/phongvien?page=Thongke"> Thống kê</a> 
+   
 </div>
 
 <jsp:include page="${contentPage}" />  
@@ -104,5 +104,6 @@
 <div class="footer">
         Welcome &lt;Họ và tên&gt;
     </div>
+</body>
 </body>
 </html>
