@@ -9,6 +9,11 @@
 <body>
 	<h2>Chào mừng đến với Trang Độc giả</h2>
 	<p>Vui lòng chọn mục trên menu để xem danh sách tin tức.</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/UserControl?page=home">">Trang Chủ</a>
+  </div>
+</nav>
 
 </body>
 </html>

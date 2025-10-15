@@ -48,7 +48,7 @@ public class AdminControl extends HttpServlet {
 	                file = "Dashboard.jsp"; // 👉 đổi tên khác thay vì Home.jsp để tránh vòng lặp
 	        }
 
-	        // Gửi tên file sang Home.jsp
+	       
 	        request.setAttribute("contentPage", file);
 	        request.getRequestDispatcher("/AdminManger/Home.jsp").forward(request, response);
 

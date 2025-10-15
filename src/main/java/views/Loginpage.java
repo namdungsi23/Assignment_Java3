@@ -27,7 +27,7 @@ public class Loginpage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/manager/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/Account/login.jsp").forward(request, response);
 	}
 
 	/**

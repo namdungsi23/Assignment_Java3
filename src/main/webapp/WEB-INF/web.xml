@@ -39,4 +39,34 @@
     <servlet-name>reporterControl</servlet-name>
     <url-pattern>/reporterControl</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Trangchu</display-name>
+    <servlet-name>Trangchu</servlet-name>
+    <servlet-class>dao.Trangchu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Trangchu</servlet-name>
+    <url-pattern>/Trangchu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrangchuDao</display-name>
+    <servlet-name>TrangchuDao</servlet-name>
+    <servlet-class>dao.TrangchuDao</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrangchuDao</servlet-name>
+    <url-pattern>/TrangchuDao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrangchuDaoImpl</display-name>
+    <servlet-name>TrangchuDaoImpl</servlet-name>
+    <servlet-class>implement.TrangchuDaoImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrangchuDaoImpl</servlet-name>
+    <url-pattern>/TrangchuDaoImpl</url-pattern>
+  </servlet-mapping>
 </web-app>

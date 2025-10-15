@@ -6,14 +6,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
+import implement.TrangchuDaoImpl;
+import dao.TrangchuDao;
+import entity.News;
 /**
  * Servlet implementation class UserControl
  */
 @WebServlet("/UserControl")
 public class UserControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private TrangchuDao dao = new TrangchuDaoImpl(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,7 +50,8 @@ public class UserControl extends HttpServlet {
 	        // Gửi tên file sang JSP chính
 	        request.setAttribute("contentPage", file);
 	        request.getRequestDispatcher("/manager/Reader.jsp").forward(request, response);
-
+	       //xuất dữ liệu từ database lên
+	        List<News> list = dao.findHomeNews();
 	}
 
 	/**

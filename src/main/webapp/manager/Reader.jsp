@@ -46,6 +46,11 @@
 .header-right a:hover {
 	color: #0056b3;
 }
+
+#main-content {
+	
+}
+
 </style>
 	<%@ page import="java.text.SimpleDateFormat, java.util.Date"%>
 
@@ -66,11 +71,25 @@
 			<a href="${pageContext.request.contextPath}/loginbao">Đăng nhập</a>
 		</div>
 	</div>
+	
+	<!-- Menu -->
 	<%@ include file="menu.jsp"%>
+	
 	<!-- Khu vực hiển thị nội dung --> 
 	<div id="main-content" style="padding: 20px;">
-		<jsp:include page="${contentPage}" />
+		<!-- Main content -->
+		<div class="main-content">
+			<jsp:include page="${contentPage}" />
+		</div>
+		
+		<!-- Sidebar -->
+		<div class="sidebar">
+		
+		</div>
+		
 	</div>
+	
+	<!-- Footer -->
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
