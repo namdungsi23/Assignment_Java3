@@ -36,22 +36,22 @@ public class UserControl extends HttpServlet {
 
 	        String file;
 	        switch (page) {
-	            case "vanhoa":  file = "Vanhoa.jsp"; break;
-	            case "thethao": file = "Thethao.jsp"; break;
-	            case "suckhoe": file = "Suckhoe.jsp"; break;
-	            case "chinhtri":file = "Chinhtri.jsp"; break;
-	            case "dulich":  file = "Dulich.jsp"; break;
-	            case "doisong":  file = "DoiSong.jsp"; break;
-	            case "giaoduc":  file = "Giaoduc.jsp"; break;
-	            case "congnghe":  file = "Congnghe.jsp"; break;
-	            default:        file = "Home.jsp";
+	        		case "home": file = "/home-control"; break;
+	            case "vanhoa":  file = "/van-hoa"; break;
+	            case "thethao": file = "/the-thao"; break;
+	            case "suckhoe": file = "/suc-khoe"; break;
+	            case "chinhtri":file = "/chinh-tri"; break;
+	            case "dulich":  file = "/du-lich"; break;
+	            case "doisong":  file = "/doi-song"; break;
+	            case "giaoduc":  file = "/giao-duc"; break;
+	            case "congnghe":  file = "/cong-nghe"; break;
+	            default:        file = "/home-control";
 	        }
 
 	        // Gửi tên file sang JSP chính
 	        request.setAttribute("contentPage", file);
 	        request.getRequestDispatcher("/manager/Reader.jsp").forward(request, response);
-	       //xuất dữ liệu từ database lên
-	        List<News> list = dao.findHomeNews();
+
 	}
 
 	/**

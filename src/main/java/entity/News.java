@@ -2,7 +2,7 @@ package entity;
 
 public class News {
 
-	    private int id;
+	    private String id;
 	    private String title;
 	    private String content;
 	    private String image;
@@ -10,13 +10,14 @@ public class News {
 	    private int viewCount;
 	    private int favoriteCount;
 	    private boolean isActive;
-	    private int categoryId;
-	    private int userId;
+	    private String categoryId;
+	    private String userId;
+	    
 
 	    public News() {}
 
-	    public News(int id, String title, String content, String image, java.sql.Date publishedDate,
-	                int viewCount, int favoriteCount, boolean isActive, int categoryId, int userId) {
+	    public News(String id, String title, String content, String image, java.sql.Date publishedDate,
+	                int viewCount, int favoriteCount, boolean isActive, String categoryId, String userId) {
 	        this.id = id;
 	        this.title = title;
 	        this.content = content;
@@ -30,11 +31,11 @@ public class News {
 	    }
 
 	    // Getter và Setter
-	    public int getId() {
+	    public String getId() {
 	        return id;
 	    }
 
-	    public void setId(int id) {
+	    public void setId(String id) {
 	        this.id = id;
 	    }
 
@@ -94,19 +95,19 @@ public class News {
 	        this.isActive = isActive;
 	    }
 
-	    public int getCategoryId() {
+	    public String getCategoryId() {
 	        return categoryId;
 	    }
 
-	    public void setCategoryId(int categoryId) {
+	    public void setCategoryId(String categoryId) {
 	        this.categoryId = categoryId;
 	    }
 
-	    public int getUserId() {
+	    public String getUserId() {
 	        return userId;
 	    }
 
-	    public void setUserId(int userId) {
+	    public void setUserId(String userId) {
 	        this.userId = userId;
 	    }
 	}

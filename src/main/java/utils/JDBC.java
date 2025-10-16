@@ -15,10 +15,10 @@ import java.sql.SQLException;
  * Servlet implementation class JDBC
  */
 public class JDBC {
-	static String driver = "com.microsoft.sqlserver.JDBC.SQLServerDriver";
-	static String dburl = "JDBC:sqlserver://localhost;databaseName=FPolyNews;encrypt=false";
+	static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=FPolyNews;encrypt=false";
 	static String username = "sa";
-	static String password = "";
+	static String password = "123";
 	static {
 		try { // nạp driver
 			Class.forName(driver);
