@@ -4,33 +4,110 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Trang Độc giả</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<title>${news.title} - VietnamNet</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body {
+		font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+		background-color: #f8f9fa;
+	}
+	.navbar {
+		background-color: #b71c1c; /* đỏ đặc trưng Vietnamnet */
+	}
+	.navbar-brand {
+		font-weight: bold;
+		font-size: 1.4rem;
+		text-transform: uppercase;
+		color: white !important;
+	}
+	.news-content {
+		max-width: 900px;
+		background: #fff;
+		padding: 20px 30px;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+	}
+	.news-title {
+		font-size: 1.8rem;
+		font-weight: 700;
+		color: #111;
+		margin-bottom: 15px;
+	}
+	.news-meta {
+		font-size: 0.9rem;
+		color: #888;
+		margin-bottom: 20px;
+	}
+	.news-img {
+		width: 100%;
+		border-radius: 6px;
+		margin-bottom: 20px;
+	}
+	.news-body {
+		font-size: 1.1rem;
+		line-height: 1.8;
+		color: #333;
+	}
+	.navigation a {
+		border-radius: 20px;
+	}
+	footer {
+		margin-top: 60px;
+		padding: 20px 0;
+		text-align: center;
+		background-color: #f1f1f1;
+		font-size: 0.9rem;
+		color: #777;
+	}
+</style>
 </head>
 <body>
-<%-- 
-	<h2>Chào mừng đến với Trang Độc giả</h2>
-	<p>Vui lòng chọn mục trên menu để xem danh sách tin tức.</p>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="${pageContext.request.contextPath}/UserControl?page=home">Trang Chủ</a>
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark">
+	  <div class="container">
+	    <a class="navbar-brand" href="${pageContext.request.contextPath}/UserControl?page=home">VietnamNet</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	      <ul class="navbar-nav ms-auto">
+	        <li class="nav-item"><a class="nav-link" href="#">Thời sự</a></li>
+	        <li class="nav-item"><a class="nav-link" href="#">Kinh doanh</a></li>
+	        <li class="nav-item"><a class="nav-link" href="#">Giải trí</a></li>
+	        <li class="nav-item"><a class="nav-link" href="#">Thể thao</a></li>
+	        <li class="nav-item"><a class="nav-link" href="#">Công nghệ</a></li>
+	      </ul>
+	    </div>
 	  </div>
 	</nav>
---%>
-	<div class="news-content container mt-4" >
-		<div class="content" style="">
-			<img src="manager/img/${news.image }" class="content-img-top" alt="${news.title }">
-			<div class="content-body">
-				<h3 class="content-title">${news.title }</h3>
+
+	<!-- Nội dung -->
+	<div class="container my-5">
+		<div class="news-content mx-auto">
+			<h1 class="news-title">${news.title}</h1>
+			<p class="news-meta">
+    Ngày đăng: ${news.publishedDate} |
+    Người đăng: ${news.userId}
+          </p>
+
+			<img src="manager/img/${news.image}" alt="${news.title}" class="news-img">
+			<div class="news-body">
+				<p>${news.content}</p>
+			</div>
+
+			<div class="navigation mt-4 d-flex justify-content-between">
+				<a href="${pageContext.request.contextPath}/UserControl?page=home&action=prev&id=${news.id}" class="btn btn-outline-danger px-4">← Tin trước</a>
+				<a href="${pageContext.request.contextPath}/UserControl?page=home&action=next&id=${news.id}" class="btn btn-outline-danger px-4">Tin sau →</a>
 			</div>
 		</div>
-		
-		<div class="navigation mt-3 d-flex justify-content-between">
-			<a href="${pageContext.request.contextPath}/UserControl?page=home&action=prev&id=${news.id}" class="btn btn-outline-primary">Tin trước</a>
-    			<a href="${pageContext.request.contextPath}/UserControl?page=home&action=next&id=${news.id}" class="btn btn-outline-primary">Tin sau</a>
-		</div>
-		
 	</div>
 
+	<!-- Footer -->
+	<footer>
+		<p>&copy; 2025 VietnamNet - Bản quyền thuộc về Báo VietnamNet</p>
+	</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
