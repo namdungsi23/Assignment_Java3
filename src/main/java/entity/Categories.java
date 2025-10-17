@@ -1,7 +1,7 @@
 package entity;
 
 public class Categories {
-	private int id;
+	private String id;
     private String name;
     private String alias;
     private int viewCount;
@@ -10,7 +10,7 @@ public class Categories {
 
     public Categories() {}
 
-    public Categories(int id, String name, String alias, int viewCount, int favoriteCount, boolean isActive) {
+    public Categories(String id, String name, String alias, int viewCount, int favoriteCount, boolean isActive) {
         this.id = id;
         this.name = name;
         this.alias = alias;
@@ -20,11 +20,11 @@ public class Categories {
     }
 
     // Getter và Setter
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

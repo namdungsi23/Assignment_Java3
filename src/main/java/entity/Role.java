@@ -1,22 +1,22 @@
 package entity;
 
 public class Role {
-	 private int roleId;
+	 private String roleId;
 	    private String roleName;
 
 	    public Role() {}
 
-	    public Role(int roleId, String roleName) {
+	    public Role(String roleId, String roleName) {
 	        this.roleId = roleId;
 	        this.roleName = roleName;
 	    }
 
 	    // Getter và Setter
-	    public int getRoleId() {
+	    public String getRoleId() {
 	        return roleId;
 	    }
 
-	    public void setRoleId(int roleId) {
+	    public void setRoleId(String roleId) {
 	        this.roleId = roleId;
 	    }
 
