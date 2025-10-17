@@ -18,7 +18,7 @@ public class JDBC {
 	static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=FPolyNews;encrypt=false";
 	static String username = "sa";
-	static String password = "123";
+	static String password = "";
 	static {
 		try { // nạp driver
 			Class.forName(driver);

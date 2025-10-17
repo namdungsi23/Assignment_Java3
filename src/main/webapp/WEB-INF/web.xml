@@ -69,4 +69,24 @@
     <servlet-name>TrangchuDaoImpl</servlet-name>
     <url-pattern>/TrangchuDaoImpl</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Regester</display-name>
+    <servlet-name>Regester</servlet-name>
+    <servlet-class>views.Regester</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Regester</servlet-name>
+    <url-pattern>/Regester</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ThethaoControl</display-name>
+    <servlet-name>ThethaoControl</servlet-name>
+    <servlet-class>views.ThethaoControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThethaoControl</servlet-name>
+    <url-pattern>/ThethaoControl</url-pattern>
+  </servlet-mapping>
 </web-app>
