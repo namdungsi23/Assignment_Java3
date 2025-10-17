@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,14 +93,14 @@
 		</div>
 	</div>
     <div class="menu">
-    <a href="<%= request.getContextPath() %>/AdminControl?page=home">Quản lý chung</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=tintuc"> Quản lý Tin tức</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=Loaitin"> Quản lý Loại tin</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung"> Quản lý Người dùng</a> 
-    <a href="<%= request.getContextPath() %>/AdminControl?page=Newsletter"> Quản lý Newsletter</a>
-</div>
+	    <a href="<%= request.getContextPath() %>/AdminControl?page=home">Quản lý chung</a> 
+	    <a href="<%= request.getContextPath() %>/AdminControl?page=tintuc"> Quản lý Tin tức</a> 
+	    <a href="<%= request.getContextPath() %>/AdminControl?page=Loaitin"> Quản lý Loại tin</a> 
+	    <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung"> Quản lý Người dùng</a> 
+	    <a href="<%= request.getContextPath() %>/AdminControl?page=Newsletter"> Quản lý Newsletter</a>
+	</div>
 
-<jsp:include page="${contentPage}" />  
+	<c:import url="${contentPage}" />  
 
 <div class="footer">
         Welcome &lt;Họ và tên&gt;

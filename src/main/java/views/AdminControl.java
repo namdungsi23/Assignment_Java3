@@ -39,16 +39,15 @@ public class AdminControl extends HttpServlet {
 	                file = "Loaitin.jsp";
 	                break;
 	            case "nguoidung":
-	                file = "Nguoidung.jsp";
+	                file = "/nguoi-dung";
 	                break;
 	            case "Newsletter":
 	                file = "Newsletter.jsp";
 	                break;
 	            default:
-	                file = "Dashboard.jsp"; // 👉 đổi tên khác thay vì Home.jsp để tránh vòng lặp
-	        }
-
-	       
+	                file = "Dashboard.jsp"; 
+	        }  
+	        
 	        request.setAttribute("contentPage", file);
 	        request.getRequestDispatcher("/AdminManger/Home.jsp").forward(request, response);
 

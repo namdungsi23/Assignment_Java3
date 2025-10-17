@@ -1,18 +1,18 @@
 package entity;
 
 public class User {
-	 private int id;
+	 	private String id;
 	    private String userName;
 	    private String fullName;
 	    private String email;
 	    private String passwordHash;
-	    private int roleId;
+	    private String roleId;
 	    private boolean isActive;
 
 	    public User() {}
 
-	    public User(int id, String userName, String fullName, String email,
-	                String passwordHash, int roleId, boolean isActive) {
+	    public User(String id, String userName, String fullName, String email,
+	                String passwordHash, String roleId, boolean isActive) {
 	        this.id = id;
 	        this.userName = userName;
 	        this.fullName = fullName;
@@ -23,11 +23,11 @@ public class User {
 	    }
 
 	    // Getter và Setter
-	    public int getId() {
+	    public String getId() {
 	        return id;
 	    }
 
-	    public void setId(int id) {
+	    public void setId(String id) {
 	        this.id = id;
 	    }
 
@@ -63,11 +63,11 @@ public class User {
 	        this.passwordHash = passwordHash;
 	    }
 
-	    public int getRoleId() {
+	    public String getRoleId() {
 	        return roleId;
 	    }
 
-	    public void setRoleId(int roleId) {
+	    public void setRoleId(String roleId) {
 	        this.roleId = roleId;
 	    }
 
