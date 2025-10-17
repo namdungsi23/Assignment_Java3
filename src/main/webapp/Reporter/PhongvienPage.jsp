@@ -88,7 +88,8 @@
 
 		<!-- Bên phải -->
 		<div class="header-right">
-			<a href="login.jsp">Đăng nhập</a>
+			<a href="<%= request.getContextPath() %>/Account/login.jsp">Đăng nhập</a>
+
 		</div>
 	</div>
     <div class="menu">
