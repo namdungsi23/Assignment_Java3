@@ -33,13 +33,20 @@ public class Loginpage extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String bao=request.getParameter("username");
-		String ha=request.getParameter("password");
-		request.setAttribute("bao", bao);
-		request.setAttribute("ha", ha);
-		request.getRequestDispatcher("/manager/login.jsp").forward(request, response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
 
+	    String bao = request.getParameter("username");
+	    String ha = request.getParameter("password");
+
+	    // Giả sử luôn đăng nhập thành công
+	    // ✅ Lưu username vào Cookie (1 ngày)
+	    jakarta.servlet.http.Cookie userCookie = new jakarta.servlet.http.Cookie("username", bao);
+	    userCookie.setMaxAge(24 * 60 * 60); // 1 ngày
+	    response.addCookie(userCookie);
+
+	    // ✅ Chuyển đến trang Home
+	    response.sendRedirect(request.getContextPath() + "/AdminManger/Home.jsp");
+	}
 }
+
