@@ -89,4 +89,44 @@
     <servlet-name>ThethaoControl</servlet-name>
     <url-pattern>/ThethaoControl</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IntroduceDao</display-name>
+    <servlet-name>IntroduceDao</servlet-name>
+    <servlet-class>dao.IntroduceDao</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IntroduceDao</servlet-name>
+    <url-pattern>/IntroduceDao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IntroduceDaoImpl</display-name>
+    <servlet-name>IntroduceDaoImpl</servlet-name>
+    <servlet-class>implement.IntroduceDaoImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IntroduceDaoImpl</servlet-name>
+    <url-pattern>/IntroduceDaoImpl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DangnhapDao</display-name>
+    <servlet-name>DangnhapDao</servlet-name>
+    <servlet-class>dao.DangnhapDao</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DangnhapDao</servlet-name>
+    <url-pattern>/DangnhapDao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DangnhapDaoImpl</display-name>
+    <servlet-name>DangnhapDaoImpl</servlet-name>
+    <servlet-class>implement.DangnhapDaoImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DangnhapDaoImpl</servlet-name>
+    <url-pattern>/DangnhapDaoImpl</url-pattern>
+  </servlet-mapping>
 </web-app>

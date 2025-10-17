@@ -108,7 +108,7 @@
 
                 <div class="links">
                     <a href="#">Quên mật khẩu</a> | 
-                    <a href="register.jsp">Đăng nhập</a>
+                    <a href="register.jsp">Đăng ký</a>
                     
                 </div>
             </div>

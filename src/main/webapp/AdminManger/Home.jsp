@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,23 +71,17 @@
 .header-right a:hover {
 	color: #0056b3;
 }
+</style>
 
-   </style>
-   <!-- Menu -->
-   <%@ page import="java.text.SimpleDateFormat, java.util.Date"%>
+<%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
+<%@ page import="jakarta.servlet.http.Cookie" %>
 
-	<%
-    // Lấy ngày giờ hiện tại
+<%
+    // 🕒 Lấy thời gian hiện tại
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     String now = sdf.format(new Date());
-%>
-	<div class="headers">
-		<!-- Bên trái -->
-		<div class="header-left">
-			<div class="header-logo">📰 MyNews</div>
-			<div class="header-date"><%= now %></div>
-		</div>
 
+<<<<<<< HEAD
 		<!-- Bên phải -->
 		<div class="header-right">
 			<a href="login.jsp">Đăng nhập</a>
@@ -99,11 +94,50 @@
 	    <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung"> Quản lý Người dùng</a> 
 	    <a href="<%= request.getContextPath() %>/AdminControl?page=Newsletter"> Quản lý Newsletter</a>
 	</div>
+=======
+    // 🍪 Lấy tên người dùng từ Cookie (nếu có)
+    String username = null;
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie c : cookies) {
+            if ("username".equals(c.getName())) {
+                username = c.getValue();
+                break;
+            }
+        }
+    }
+%>
+
+<div class="headers">
+    <!-- Bên trái -->
+    <div class="header-left">
+        <div class="header-logo">📰 MyNews</div>
+        <div class="header-date"><%= now %></div>
+    </div>
+
+    <!-- Bên phải -->
+    <div class="header-right">
+        <% if (username != null) { %>
+            <span>👋 <%= username %></span>
+        <% } else { %>
+            <a href="<%= request.getContextPath() %>/Account/login.jsp">Đăng nhập</a>
+        <% } %>
+    </div>
+</div>
+
+<!-- Menu -->
+<div class="menu">
+    <a href="<%= request.getContextPath() %>/AdminControl?page=home">Quản lý chung</a> 
+    <a href="<%= request.getContextPath() %>/AdminControl?page=tintuc">Quản lý Tin tức</a> 
+    <a href="<%= request.getContextPath() %>/AdminControl?page=Loaitin">Quản lý Loại tin</a> 
+    <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung">Quản lý Người dùng</a> 
+    <a href="<%= request.getContextPath() %>/AdminControl?page=Newsletter">Quản lý Newsletter</a>
+</div>
+>>>>>>> 7d2f5ab69b83ae368beb0ce6437b70c311432071
 
 	<c:import url="${contentPage}" />  
 
-<div class="footer">
-        Welcome &lt;Họ và tên&gt;
-    </div>
+
+
 </body>
 </html>

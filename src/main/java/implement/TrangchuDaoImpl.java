@@ -46,7 +46,7 @@ public class TrangchuDaoImpl implements TrangchuDao{
                 n.setTitle(rs.getString("title"));
                 n.setContent(rs.getString("content"));
                 n.setImage(rs.getString("image"));
-                n.setPublishedDate(rs.getDate("publishedDate"));
+                n.setPublishedDate(rs.getTimestamp("publishedDate"));
                 n.setViewCount(rs.getInt("ViewCount"));
                 n.setFavoriteCount(rs.getInt("favoriteCount"));
                 n.setActive(rs.getBoolean("IsActive"));
@@ -74,7 +74,7 @@ public class TrangchuDaoImpl implements TrangchuDao{
                 n.setTitle(rs.getString("title"));
                 n.setContent(rs.getString("content"));
                 n.setImage(rs.getString("image"));
-                n.setPublishedDate(rs.getDate("publishedDate"));
+                n.setPublishedDate(rs.getTimestamp("publishedDate"));
                 n.setViewCount(rs.getInt("viewCount"));
                 n.setFavoriteCount(rs.getInt("favoriteCount"));
                 n.setActive(rs.getBoolean("IsActive"));
@@ -164,7 +164,7 @@ public class TrangchuDaoImpl implements TrangchuDao{
         n.setTitle(rs.getString("title"));
         n.setContent(rs.getString("content"));
         n.setImage(rs.getString("image"));
-        n.setPublishedDate(rs.getDate("publishedDate"));
+        n.setPublishedDate(rs.getTimestamp("publishedDate"));
         n.setViewCount(rs.getInt("viewCount"));
         n.setFavoriteCount(rs.getInt("favoriteCount"));
         n.setActive(rs.getBoolean("IsActive"));
