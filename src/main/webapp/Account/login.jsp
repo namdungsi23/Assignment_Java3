@@ -103,12 +103,13 @@
                     <div class="input-box">
                         <input type="password" name="password" placeholder="Mật khẩu" required>
                     </div>
-                    <button type="submit" class="login-btn" >Đăng nhập</button>
+                    <button type="submit" class="login-btn">Đăng nhập</button>
                 </form>
 
                 <div class="links">
                     <a href="#">Quên mật khẩu</a> | 
-                    <a href="#">Đăng ký</a>
+                    <a href="register.jsp">Đăng nhập</a>
+                    
                 </div>
             </div>
         </div>
