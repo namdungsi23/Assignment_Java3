@@ -92,6 +92,13 @@
 				    <button type="submit">Delete</button>
 				</form>
 	          </td>
+	          <td>
+	          	<form action="${pageContext.request.contextPath}/nguoi-dung" method="post">
+				    <input type="hidden" name="action" value="edit">
+				    <input type="hidden" name="id" value="${u.id}">
+				    <button type="submit">Edit</button>
+				</form>
+	          </td>
 	        </tr>
 	      </c:forEach>
 	    </tbody>
@@ -100,47 +107,49 @@
   	
   	<h2>User Information Form</h2>
 	<form action="${pageContext.request.contextPath}/nguoi-dung" method="post">
-	  <div class="form-group">
-	    <label for="id">ID:</label>
-	    <input type="text" id="id" name="id">
-	  </div>
+		<div class="form-group">
+		    <label for="id">ID:</label>
+		    <input type="text" id="id" name="id" value="${editedUser!=null ? editedUser.id : ''}">
+		  </div>
 	
-	  <div class="form-group">
-	    <label for="userName">Username:</label>
-	    <input type="text" id="userName" name="userName">
-	  </div>
+		  <div class="form-group">
+		    <label for="userName">Username:</label>
+		    <input type="text" id="userName" name="userName" value="${editedUser!=null ? editedUser.userName : ''}">
+	  	</div>
 	
-	  <div class="form-group">
-	    <label for="fullName">Full Name:</label>
-	    <input type="text" id="fullName" name="fullName">
-	  </div>
+		  <div class="form-group">
+		    <label for="fullName">Full Name:</label>
+		    <input type="text" id="fullName" name="fullName" value="${editedUser!=null ? editedUser.fullName : ''}">
+		  </div>
 	
-	  <div class="form-group">
-	    <label for="email">Email:</label>
-	    <input type="email" id="email" name="email">
-	  </div>
+		  <div class="form-group">
+		    <label for="email">Email:</label>
+		    <input type="email" id="email" name="email" value="${editedUser!=null ? editedUser.email : ''}">
+		  </div>
 	
-	  <div class="form-group">
-	    <label for="passwordHash">Password:</label>
-	    <input type="password" id="passwordHash" name="passwordHash">
-	  </div>
+		  <div class="form-group">
+		    <label for="passwordHash">Password:</label>
+		    <input type="password" id="passwordHash" name="passwordHash">
+		  </div>
 	
-	  <div class="form-group">
-	    <label for="roleId">Role ID:</label>
-	    <input type="text" id="roleId" name="roleId">
-	  </div>
+		  <div class="form-group">
+		    <label for="roleId">Role ID:</label>
+		    <input type="text" id="roleId" name="roleId" value="${editedUser!=null ? editedUser.roleId : ''}">
+		  </div>
 	
-	  <div class="form-group">
-	    <label for="isActive">Is Active:</label>
-	    <input type="checkbox" id="isActive" name="isActive">
-	  </div>
+		  <div class="form-group">
+		    <label for="isActive">Is Active:</label>
+		    <input type="checkbox" id="isActive" name="isActive" 
+		       <c:if test="${editedUser != null && editedUser.active}">
+		           checked
+		       </c:if>
+			>
+		  </div>
 	
 	  <button type="submit" name="action" value="create">Create</button>
-	  <button type="submit" name="action" value="Update">Update</button>
+	  <button type="submit" name="action" value="update">Update</button>
 	  <button type="reset">Reset</button>
 	</form>
-
-  	
 
 </body>
 </html>

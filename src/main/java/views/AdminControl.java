@@ -33,16 +33,16 @@ public class AdminControl extends HttpServlet {
 	        String file;
 	        switch (page) {
 	            case "tintuc":
-	                file = "Tintuc.jsp";
+	                file = "/tin-tuc";
 	                break;
 	            case "Loaitin":
-	                file = "Loaitin.jsp";
+	                file = "/loai-tin";
 	                break;
 	            case "nguoidung":
 	                file = "/nguoi-dung";
 	                break;
 	            case "Newsletter":
-	                file = "Newsletter.jsp";
+	                file = "/newsletter";
 	                break;
 	            default:
 	                file = "Dashboard.jsp"; 

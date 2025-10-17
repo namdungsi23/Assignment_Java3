@@ -18,6 +18,7 @@ import implement.TrangchuDaoImpl;
 @WebServlet("/home-control")
 public class HomePageControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	TrangchuDaoImpl homeDao = new TrangchuDaoImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,7 +33,7 @@ public class HomePageControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		TrangchuDaoImpl homeDao = new TrangchuDaoImpl();
+
 		String latest = request.getParameter("latest");
 		String id = request.getParameter("id");
 		String action = request.getParameter("action");
@@ -68,7 +69,7 @@ public class HomePageControl extends HttpServlet {
 					else if("next".equals(action)) request.setAttribute("news", next);
 			}else {
 				News news = homeDao.findFirst();
-				System.out.println(news.getImage());
+				System.out.println(news.getId());
 				request.setAttribute("news", news);
 			}
 	    }

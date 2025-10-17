@@ -1,12 +1,13 @@
 package entity;
 
-public class News {
+import java.sql.Timestamp;
 
+public class News {
 	    private String id;
 	    private String title;
 	    private String content;
 	    private String image;
-	    private java.sql.Date publishedDate;
+	    private Timestamp publishedDate;
 	    private int viewCount;
 	    private int favoriteCount;
 	    private boolean isActive;
@@ -16,7 +17,7 @@ public class News {
 
 	    public News() {}
 
-	    public News(String id, String title, String content, String image, java.sql.Date publishedDate,
+	    public News(String id, String title, String content, String image, Timestamp publishedDate,
 	                int viewCount, int favoriteCount, boolean isActive, String categoryId, String userId) {
 	        this.id = id;
 	        this.title = title;
@@ -63,11 +64,11 @@ public class News {
 	        this.image = image;
 	    }
 
-	    public java.sql.Date getPublishedDate() {
+	    public Timestamp getPublishedDate() {
 	        return publishedDate;
 	    }
 
-	    public void setPublishedDate(java.sql.Date publishedDate) {
+	    public void setPublishedDate(Timestamp publishedDate) {
 	        this.publishedDate = publishedDate;
 	    }
 

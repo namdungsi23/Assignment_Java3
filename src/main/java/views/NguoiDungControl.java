@@ -57,7 +57,9 @@ public class NguoiDungControl extends HttpServlet {
         user.setUserName(userName);
         user.setFullName(fullName);
         user.setEmail(email);
-        user.setPasswordHash(passwordHash);
+        if (passwordHash != null && !passwordHash.isEmpty()) {
+            user.setPasswordHash(passwordHash);
+        }   
         user.setRoleId(roleId);
         user.setActive(isActive);
 		
@@ -68,8 +70,17 @@ public class NguoiDungControl extends HttpServlet {
         } else if ("create".equals(action)) {
             userDao.insert(user);
 
-        } else if ("Update".equals(action)) {
+        } else if ("update".equals(action)) {
             userDao.update(user);
+        }else if("edit".equals(action)) {
+        		User editedUser = userDao.findById(id);
+        		request.setAttribute("editedUser", editedUser);
+        		
+        		List<User> users = userDao.findAll();
+            request.setAttribute("users", users);
+                
+        		request.getRequestDispatcher("/AdminManger/Nguoidung.jsp").forward(request, response);
+    		    return; 
         }
         
         response.sendRedirect(request.getContextPath() + "/nguoi-dung");
