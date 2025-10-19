@@ -96,7 +96,7 @@
     <a href="<%= request.getContextPath() %>/phongvien?page=Thongtin">Thông tin phóng viên</a> 
     <a href="<%= request.getContextPath() %>/phongvien?page=Baiviet"> Quản lý bài viết</a> 
     <a href="<%= request.getContextPath() %>/phongvien?page=Dangtin"> Đăng tin</a> 
-    <a href="<%= request.getContextPath() %>/phongvien?page=Thongke"> Thống kê</a> 
+    <!-- <a href="<%= request.getContextPath() %>/phongvien?page=Thongke"> Thống kê</a>  -->
    
 </div>
 

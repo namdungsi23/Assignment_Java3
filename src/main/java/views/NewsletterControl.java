@@ -7,12 +7,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import entity.User;
+import implement.NguoiDungDaoImpl;
+
 /**
  * Servlet implementation class NewsletterControl
  */
 @WebServlet("/newsletter")
 public class NewsletterControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	NguoiDungDaoImpl userDao = new NguoiDungDaoImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,7 +39,15 @@ public class NewsletterControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String email = request.getParameter("email");
+		System.out.println(email);
+		User u = (User)request.getSession().getAttribute("user");
+		String id = u.getId();
+		System.out.println(id);
+		
+		userDao.updateNewsletter(id);
+		
+		request.getRequestDispatcher("/UserControl").forward(request, response);
 	}
 
 }

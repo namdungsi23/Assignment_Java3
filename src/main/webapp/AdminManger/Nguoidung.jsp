@@ -80,7 +80,7 @@
       background-color: #218838;
     }
 	
-  </style>
+</style>
 </head>
 <body>
 	<h3>Quản lý người dùng</h3>

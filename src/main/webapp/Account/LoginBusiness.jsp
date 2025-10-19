@@ -108,7 +108,7 @@
                 </form>
 
                 <div class="links">
-                    <a href="#">Quên mật khẩu</a> | 
+                    <!-- <a href="#">Quên mật khẩu</a> |  -->
                 </div>
                 <br><br>
                 

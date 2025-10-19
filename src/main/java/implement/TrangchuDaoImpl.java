@@ -219,6 +219,23 @@ public class TrangchuDaoImpl implements TrangchuDao {
         }
         return newsList;
     }
+    
+    public List<News> findHottestNews() {
+        String sql = "SELECT TOP 5 * FROM News ORDER BY ViewCount DESC";
+        List<News> newsList = new ArrayList<>();
+        try {
+            ResultSet rs = JDBC.executeQuery(sql);
+            while (rs.next()) {
+                News n = mapResultSetToNews(rs);
+                newsList.add(n);
+            }
+            closeResources(rs);
+        } catch (Exception e) {
+            System.err.println("Lỗi khi lấy tin tức mới nhất: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return newsList;
+    }
 
     private News mapResultSetToNews(ResultSet rs) throws SQLException {
         News n = new News();

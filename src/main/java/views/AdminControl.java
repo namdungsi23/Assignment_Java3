@@ -57,7 +57,7 @@ public class AdminControl extends HttpServlet {
 		                file = "/nguoi-dung";
 		                break;
 		            case "Newsletter":
-		                file = "/newsletter";
+		                file = "/newsletter-admin";
 		                break;
 		            default:
 		                file = "/tin-tuc"; 

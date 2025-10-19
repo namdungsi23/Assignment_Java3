@@ -170,20 +170,23 @@
     <div class="sidebar">
         <div class="sb-box">
             <h5>Tin nổi bật</h5>
-            <a href="${pageContext.request.contextPath}/UserControl?hottest=true&id=${news.id}" class="btn btn-outline-primary"">5 bản tin được xem nhiều</a>
+            <a href="${pageContext.request.contextPath}/UserControl?showList=hottest&hottest=true&id=${news.id}" class="btn btn-outline-primary">5 bản tin được xem nhiều</a>
         </div>
         <div class="sb-box">
             <h5>Tin mới nhất</h5>
-            <a href="${pageContext.request.contextPath}/UserControl?latest=true&id=${news.id}" class="btn btn-outline-primary"">5 bản tin mới nhất</a>
+            <a href="${pageContext.request.contextPath}/UserControl?showList=latest&latest=true&id=${news.id}" class="btn btn-outline-primary"">5 bản tin mới nhất</a>
         </div>
-        <div class="sb-box">
-            <h5>Tin bạn đã xem</h5>
+        <!-- <div class="sb-box">
+            <h5>
+            <a href="${pageContext.request.contextPath}/UserControl?showList=recently&recently=true&id=${news.id}" class="btn btn-outline-primary"">5 bản tin bạn đã xem</a>
+            </h5>
             <p class="text-muted">Chưa có lịch sử xem</p>
         </div>
+         -->
         <div class="sb-box">
             <h5>Newsletter</h5>
-            <form>
-                <input type="email" class="form-control mb-2" placeholder="Nhập email của bạn">
+            <form action="${pageContext.request.contextPath }/newsletter" method="post">
+                <input type="email" class="form-control mb-2" placeholder="Nhập email của bạn" name="email">
                 <button class="btn btn-danger w-100">Đăng ký</button>
             </form>
         </div>

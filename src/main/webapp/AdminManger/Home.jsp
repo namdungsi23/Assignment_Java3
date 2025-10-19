@@ -115,7 +115,7 @@
 
 <!-- Menu -->
 <div class="menu">
-    <a href="<%= request.getContextPath() %>/AdminControl?page=home">Quản lý chung</a> 
+    <!-- <a href="<%= request.getContextPath() %>/AdminControl?page=home">Quản lý chung</a>  -->
     <a href="<%= request.getContextPath() %>/AdminControl?page=tintuc">Quản lý Tin tức</a> 
     <a href="<%= request.getContextPath() %>/AdminControl?page=Loaitin">Quản lý Loại tin</a> 
     <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung">Quản lý Người dùng</a> 

@@ -18,7 +18,7 @@ import entity.News;
 @WebServlet("/UserControl")
 public class UserControl extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private TrangchuDao dao = new TrangchuDaoImpl(); // Khởi tạo DAO
+    private TrangchuDao dao = new TrangchuDaoImpl(); 
 
     public UserControl() {
         super();

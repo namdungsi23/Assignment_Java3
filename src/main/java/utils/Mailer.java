@@ -18,7 +18,7 @@ import javax.mail.Multipart;
 
 public class Mailer {
 	
-	public static void sendMail(String from, String to, String subject, String body, File file) {
+	public static boolean sendMail(String from, String to, String subject, String body, File file) {
 		Properties props = new Properties();
 		props.setProperty("mail.smtp.auth", "true");
 		props.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -61,9 +61,10 @@ public class Mailer {
 			message.setContent(multipart);
 			Transport.send(message);
 			
-			
+			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	

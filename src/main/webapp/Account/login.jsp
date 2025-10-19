@@ -107,7 +107,7 @@
                 </form>
 
                 <div class="links">
-                    <a href="#">Quên mật khẩu</a> | 
+                    <!-- <a href="#">Quên mật khẩu</a> |  -->
                     <a href="${pageContext.request.contextPath }/Account/register.jsp">Đăng ký</a>
                     
                 </div>

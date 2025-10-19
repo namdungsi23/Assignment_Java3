@@ -8,6 +8,7 @@ public class User {
 	    private String passwordHash;
 	    private String roleId;
 	    private boolean isActive;
+	    private boolean newsletter;
 	    
 	    public static final String ROLE_ADMIN = "R001";
 	    public static final String ROLE_REPORTER = "R003";
@@ -17,7 +18,7 @@ public class User {
 	    public User() {}
 
 	    public User(String id, String userName, String fullName, String email,
-	                String passwordHash, String roleId, boolean isActive) {
+	                String passwordHash, String roleId, boolean isActive, boolean newsletter) {
 	        this.id = id;
 	        this.userName = userName;
 	        this.fullName = fullName;
@@ -82,6 +83,14 @@ public class User {
 
 	    public void setActive(boolean isActive) {
 	        this.isActive = isActive;
+	    }
+	    
+	    public boolean isNewsletter() {
+	        return newsletter;
+	    }
+
+	    public void setNewsletter(boolean newsletter) {
+	        this.newsletter = newsletter;
 	    }
 
 }

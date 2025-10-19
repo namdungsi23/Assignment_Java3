@@ -69,6 +69,7 @@
 			<p class="news-meta">
     Ngày đăng: ${news.publishedDate} |
     Người đăng: ${news.userId}
+    Lượt xem: ${news.viewCount}
           </p>
 
 			<img src="manager/img/${news.image}" alt="${news.title}" class="news-img">
@@ -77,8 +78,9 @@
 			</div>
 
 			<div class="navigation mt-4 d-flex justify-content-between">
-				<a href="${pageContext.request.contextPath}/UserControl?page=home&action=prev&id=${news.id}" class="btn btn-outline-danger px-4">← Tin trước</a>
-				<a href="${pageContext.request.contextPath}/UserControl?page=home&action=next&id=${news.id}" class="btn btn-outline-danger px-4">Tin sau →</a>
+				<a href="${pageContext.request.contextPath}/UserControl?show=${showList }&action=prev&id=${news.id}" class="btn btn-outline-danger px-4">← Tin trước</a>
+				<a href="${pageContext.request.contextPath}/UserControl?page=home&action=detail&id=${news.id}" class="btn btn-outline-danger px-4">Xem tin →</a>
+				<a href="${pageContext.request.contextPath}/UserControl?show=${showList }&action=next&id=${news.id}" class="btn btn-outline-danger px-4">Tin sau →</a>
 			</div>
 		</div>
 	</div>

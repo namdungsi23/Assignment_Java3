@@ -47,10 +47,11 @@ public class LoginReaderControl extends HttpServlet {
 		if(reader != null) {
 			request.getSession().setAttribute("login", true);
 			request.getSession().setAttribute("role", "reader");
+			request.getSession().setAttribute("user", reader);
     			request.getRequestDispatcher("/UserControl").forward(request, response);
     			return;
 		}
-		request.getRequestDispatcher("Account/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/Account/login.jsp").forward(request, response);
 	}
 }
 

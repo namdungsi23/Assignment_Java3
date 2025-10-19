@@ -34,6 +34,32 @@ public class NguoiDungDaoImpl {
         }
         return list;
     }
+    
+    public List<User> findAllNewsleter() {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT * FROM Users WHERE Newsletter = 1";
+
+        try (
+            Connection conn = JDBC.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        ) {
+            while (rs.next()) {
+                User u = new User();
+                u.setId(rs.getString("Id"));
+                u.setUserName(rs.getString("UserName"));
+                u.setFullName(rs.getString("FullName"));
+                u.setEmail(rs.getString("Email"));
+                u.setPasswordHash(rs.getString("PasswordHash"));
+                u.setRoleId(rs.getString("RoleId"));
+                u.setActive(rs.getBoolean("IsActive"));
+                list.add(u);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     public User findById(String id) {
         String sql = "SELECT * FROM Users WHERE Id = ?";
@@ -150,7 +176,21 @@ public class NguoiDungDaoImpl {
         }
         return 0;
     }
-
+    
+    public int updateNewsletter(String id) {
+        String sql = "UPDATE Users SET Newsletter = ? WHERE Id=?";
+        try (
+            Connection conn = JDBC.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+        ) {
+            ps.setBoolean(1, true);
+            ps.setString(2, id);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
     
     public int delete(String id) {
         String sql = "DELETE FROM Users WHERE Id = ?";

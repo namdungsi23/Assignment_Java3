@@ -42,8 +42,7 @@
 </style>
 	<ul class="menu">
 		<li><a
-			href="${pageContext.request.contextPath}/UserControl?page=home">Trang
-				chủ</a></li>
+			href="${pageContext.request.contextPath}/UserControl?page=home">Trang chủ</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/UserControl?page=vanhoa">Văn
 				hóa</a></li>
