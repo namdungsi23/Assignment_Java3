@@ -143,7 +143,14 @@
         <div class="header-date"><%= now %></div>
     </div>
     <div class="header-right">
-        <a href="${pageContext.request.contextPath}/loginbao">Đăng nhập</a>
+    	<c:choose>
+    		<c:when test="${sessionScope.login eq true}">
+    			<a href="${pageContext.request.contextPath}/logout-reader">Đăng xuất</a> 
+		</c:when>
+    		<c:otherwise>
+    			<a href="${pageContext.request.contextPath}/login-reader">Đăng nhập</a>
+		</c:otherwise>
+    	</c:choose>
     </div>
 </div>
 
@@ -163,11 +170,11 @@
     <div class="sidebar">
         <div class="sb-box">
             <h5>Tin nổi bật</h5>
-            <a href="${pageContext.request.contextPath}/UserControl?page=home&action=prev&id=${news.id}" class="btn btn-outline-primary"">5 bản tin được xem nhiều</a>
+            <a href="${pageContext.request.contextPath}/UserControl?hottest=true&id=${news.id}" class="btn btn-outline-primary"">5 bản tin được xem nhiều</a>
         </div>
         <div class="sb-box">
             <h5>Tin mới nhất</h5>
-            <a href="${pageContext.request.contextPath}/UserControl?page=home&action=next&id=${news.id}" class="btn btn-outline-primary"">5 bản tin mới nhất</a>
+            <a href="${pageContext.request.contextPath}/UserControl?latest=true&id=${news.id}" class="btn btn-outline-primary"">5 bản tin mới nhất</a>
         </div>
         <div class="sb-box">
             <h5>Tin bạn đã xem</h5>

@@ -117,8 +117,10 @@
 
                 <div class="links">
                     <span>Đã có tài khoản?</span>
-                    <a href="login.jsp">Đăng nhập</a>
+                    <a href="login.jsp">Đăng nhập</a><br><br>
                 </div>
+                 <!-- Thông điệp lỗi -->
+                <p>${error }</p>
             </div>
         </div>
     </div>

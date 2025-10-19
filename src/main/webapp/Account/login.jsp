@@ -96,7 +96,7 @@
             <!-- Cột bên phải -->
             <div class="right">
                 <h2>Đăng nhập</h2>
-                <form action="${pageContext.request.contextPath}/loginbao" method="post">
+                <form action="${pageContext.request.contextPath}/login-reader" method="post">
                     <div class="input-box">
                         <input type="text" name="username" placeholder="Tên đăng nhập / Email / SĐT" required>
                     </div>
@@ -108,7 +108,7 @@
 
                 <div class="links">
                     <a href="#">Quên mật khẩu</a> | 
-                    <a href="register.jsp">Đăng ký</a>
+                    <a href="${pageContext.request.contextPath }/Account/register.jsp">Đăng ký</a>
                     
                 </div>
             </div>

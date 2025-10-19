@@ -12,6 +12,7 @@ public class User {
 	    public static final String ROLE_ADMIN = "R001";
 	    public static final String ROLE_REPORTER = "R003";
 	    public static final String ROLE_EDITOR = "R002";
+	    public static final String ROLE_READER = "R004";
 	    
 	    public User() {}
 

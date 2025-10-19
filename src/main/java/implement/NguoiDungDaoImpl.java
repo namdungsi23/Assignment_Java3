@@ -9,7 +9,6 @@ import utils.JDBC;
 
 public class NguoiDungDaoImpl {
 
-  
     public List<User> findAll() {
         List<User> list = new ArrayList<>();
         String sql = "SELECT * FROM Users";
@@ -61,8 +60,57 @@ public class NguoiDungDaoImpl {
         return null;
     }
 
-   
-    public int insert(User u) {
+   //Find first reader on the list
+    public User findFirstReader() {
+        String sql = "SELECT TOP 1 * FROM Users ORDER BY Id ASC";
+        try (
+            Connection conn = JDBC.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+        ) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                User u = new User();
+                u.setId(rs.getString("Id"));
+                u.setUserName(rs.getString("UserName"));
+                u.setFullName(rs.getString("FullName"));
+                u.setEmail(rs.getString("Email"));
+                u.setPasswordHash(rs.getString("PasswordHash"));
+                u.setRoleId(rs.getString("RoleId"));
+                u.setActive(rs.getBoolean("IsActive"));
+                return u;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    //Find last reader on the list 
+    public User findLastReader() {
+        String sql = "SELECT TOP 1 * FROM Users ORDER BY Id DESC";
+        try (
+            Connection conn = JDBC.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+        ) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                User u = new User();
+                u.setId(rs.getString("Id"));
+                u.setUserName(rs.getString("UserName"));
+                u.setFullName(rs.getString("FullName"));
+                u.setEmail(rs.getString("Email"));
+                u.setPasswordHash(rs.getString("PasswordHash"));
+                u.setRoleId(rs.getString("RoleId"));
+                u.setActive(rs.getBoolean("IsActive"));
+                return u;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public int insert(User u) {   		
         String sql = "INSERT INTO Users (Id, UserName, FullName, Email, PasswordHash, RoleId, IsActive) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (
             Connection conn = JDBC.getConnection();

@@ -106,6 +106,7 @@
     <div class="header-right">
         <% if (username != null) { %>
             <span>👋 <%= username %></span>
+            <a href="<%= request.getContextPath() %>/logout">Đăng xuất</a>
         <% } else { %>
             <a href="<%= request.getContextPath() %>/logout">Đăng xuất</a>
         <% } %>

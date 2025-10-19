@@ -14,5 +14,5 @@ import entity.User;
  */
 public interface DangnhapDao  {
 	  User login(String username, String password);
-	  
+	  User loginReader(String username, String password);
 }

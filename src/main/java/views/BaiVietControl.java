@@ -1,11 +1,16 @@
 package views;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+
+import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import entity.News;
@@ -16,6 +21,11 @@ import implement.TinTucDaoImpl;
  * Servlet implementation class BaiVietControl
  */
 @WebServlet("/bai-viet")
+@MultipartConfig(
+		fileSizeThreshold = 1024 * 1024 * 1,
+		maxFileSize = 1024 * 1021 * 10,
+		maxRequestSize =	1024 * 1024 * 80,
+		location = "F:/uploadTemp")
 public class BaiVietControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private TinTucDaoImpl newsDao = new TinTucDaoImpl();
@@ -46,7 +56,82 @@ public class BaiVietControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		String id = request.getParameter("id");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		String image = null;
+		Part part = request.getPart("image");
+		if(part!=null) {
+			String fileName = part.getSubmittedFileName();	
+			if (fileName != null && !fileName.isEmpty()) {
+			    String uploadPath = getServletContext().getRealPath("/upload");
+			    File uploadDir = new File(uploadPath);
+			    if (!uploadDir.exists()) uploadDir.mkdir();
+			    part.write(uploadPath + File.separator + fileName);
+			    image = fileName;
+			}
+		}
+		
+		boolean isActive = request.getParameter("isActive") != null;
+		String categoryId = request.getParameter("categoryId");
+		String userId = request.getParameter("userId");
+		
+		News news = new News();
+		news.setId(id);
+		news.setTitle(title);
+		news.setContent(content);
+		news.setImage(image);
+		news.setPublishedDate(new Timestamp(System.currentTimeMillis()));
+		news.setActive(isActive);
+		news.setCategoryId(categoryId);
+		news.setUserId(userId);
+		news.setViewCount(0);
+		news.setFavoriteCount(0);
+		
+		String action = request.getParameter("action");
+		News editedNews = null;
+		switch (action) {
+		    case "edit":
+		        editedNews = newsDao.findById(id);
+		        request.setAttribute("editedNews", editedNews);
+		        
+		        List<News> newsList = newsDao.findByReporterId(user.getId());
+				request.setAttribute("newsList", newsList);
+		        
+				request.setAttribute("contentPage", "/Reporter/baiviet.jsp");
+				request.getRequestDispatcher("/Reporter/PhongvienPage.jsp").forward(request, response);
+		        return;
+		        
+		    case "create":
+		        newsDao.insert(news);
+		        break;
+		        
+		    case "delete":
+		        newsDao.delete(id);
+		        break;
+		        
+		    case "update":
+			    	if (image == null || image.isEmpty()) {
+			            News oldNews = newsDao.findById(id);
+			            news.setImage(oldNews.getImage());
+			        }
+		        newsDao.update(news);
+		        break;
+		     
+		    case "reset":
+		    		request.setAttribute("editedNews", editedNews);
+		    		
+		    		break;
+		    		
+		    default:		        
+		        break;
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/bai-viet");
 	}
 
 }

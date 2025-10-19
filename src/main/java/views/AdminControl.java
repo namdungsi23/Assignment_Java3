@@ -44,7 +44,7 @@ public class AdminControl extends HttpServlet {
 		        String file;
 		        switch (page) {
 		        	   case "Home":
-		        		   file="Dashboard.jsp";
+		        		   file="/tin-tuc";
 		        		   break;
 		        		   
 		            case "tintuc":
@@ -60,7 +60,7 @@ public class AdminControl extends HttpServlet {
 		                file = "/newsletter";
 		                break;
 		            default:
-		                file = "Dashboard.jsp"; 
+		                file = "/tin-tuc"; 
 		        }  
 		        
 		        request.setAttribute("contentPage", file);

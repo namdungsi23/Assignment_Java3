@@ -147,7 +147,7 @@
 				</form>
 	          </td>
 	          <td>
-	          	<form action="${pageContext.request.contextPath}/tin-tuc" method="post" enctype="multipart/form-data">
+	          	<form action="${pageContext.request.contextPath}/bai-viet" method="post" enctype="multipart/form-data">
 				    <input type="hidden" name="action" value="edit">
 				    <input type="hidden" name="id" value="${n.id}">
 				    <button type="submit">Edit</button>

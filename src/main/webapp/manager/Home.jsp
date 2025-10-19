@@ -85,7 +85,7 @@
 
 	<!-- Footer -->
 	<footer>
-		<p>&copy; 2025 VietnamNet - Bản quyền thuộc về Báo VietnamNet</p>
+		<p>&copy; 2025 VietnamNet - Bản quyền thuộc về Báo FPolyNews</p>
 	</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

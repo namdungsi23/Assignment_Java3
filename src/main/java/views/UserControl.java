@@ -113,7 +113,7 @@ public class UserControl extends HttpServlet {
                 file = "/manager/Congnghe.jsp";
                 break;
             default:
-                file = "/manager/Home.jsp";
+            		file = "/home-control";
         }
 
         request.setAttribute("contentPage", file);

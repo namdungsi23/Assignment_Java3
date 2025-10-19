@@ -42,6 +42,37 @@ public class DangnhapDaoImpl implements DangnhapDao {
 	        return null;
 	    }
 	 
+	 @Override
+	 public User loginReader(String username, String password) {
+	        String sql = """
+	        		    		 SELECT * 
+						FROM [Users] U
+						INNER JOIN [Roles] R ON R.RoleId = U.RoleId
+						WHERE 
+						U.Username = ? AND U.PasswordHash = ? 
+						AND U.IsActive = 1 
+					  	AND R.RoleName = 'Reader'
+	        		""";
+	        try {
+	            ResultSet rs = JDBC.executeQuery(sql, username, password);
+	            if (rs.next()) {
+	                User u = new User();
+	                u.setId(rs.getString("Id"));
+	                u.setUserName(rs.getString("UserName"));
+	                u.setFullName(rs.getString("FullName"));
+	                u.setEmail(rs.getString("Email"));
+	                u.setPasswordHash(rs.getString("PasswordHash"));
+	                u.setRoleId(rs.getString("RoleId"));
+	                u.setActive(rs.getBoolean("IsActive"));
+	                rs.getStatement().getConnection().close();
+	                return u;
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    }
+	 
 	
 	 
 	}

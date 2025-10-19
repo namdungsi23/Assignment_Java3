@@ -112,19 +112,88 @@ public class TrangchuDaoImpl implements TrangchuDao {
             PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = ps.executeQuery();
+
+            // Lấy tổng số bản ghi
+            rs.last();
+            int totalRows = rs.getRow();
+            rs.beforeFirst();
+
+            int currentPos = -1;
             while (rs.next()) {
                 if (rs.getString("id").equals(id)) {
-                    int currentPos = rs.getRow();
-                    if (rs.previous()) {
-                        prev = mapResultSetToNews(rs);
-                    }
-                    rs.absolute(currentPos);
-                    if (rs.next()) {
-                        next = mapResultSetToNews(rs);
-                    }
+                    currentPos = rs.getRow();
                     break;
                 }
             }
+
+            if (currentPos != -1) {
+                if (currentPos == 1) {
+                    rs.absolute(totalRows);
+                    prev = mapResultSetToNews(rs);
+                } else {
+                    rs.absolute(currentPos - 1);
+                    prev = mapResultSetToNews(rs);
+                }
+
+                // next: nếu là bản ghi cuối cùng thì next = bản ghi đầu
+                if (currentPos == totalRows) {
+                    rs.absolute(1);
+                    next = mapResultSetToNews(rs);
+                } else {
+                    rs.absolute(currentPos + 1);
+                    next = mapResultSetToNews(rs);
+                }
+            }
+
+            closeResources(rs, ps, conn);
+        } catch (Exception e) {
+            System.err.println("Lỗi khi lấy tin trước/sau cho id " + id + ": " + e.getMessage());
+            e.printStackTrace();
+        }
+        return new News[] { prev, next };
+    }
+    
+    public News[] findPrevNextLatest(String id) {
+        News prev = null, next = null;
+        String sql = "SELECT TOP 5 * FROM News WHERE IsActive = 1 ORDER BY publishedDate DESC";
+        try {
+            Connection conn = JDBC.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = ps.executeQuery();
+
+            // Lấy tổng số bản ghi
+            rs.last();
+            int totalRows = rs.getRow();
+            rs.beforeFirst();
+
+            int currentPos = -1;
+            while (rs.next()) {
+                if (rs.getString("id").equals(id)) {
+                    currentPos = rs.getRow();
+                    break;
+                }
+            }
+
+            if (currentPos != -1) {
+                if (currentPos == 1) {
+                    rs.absolute(totalRows);
+                    prev = mapResultSetToNews(rs);
+                } else {
+                    rs.absolute(currentPos - 1);
+                    prev = mapResultSetToNews(rs);
+                }
+
+                // next: nếu là bản ghi cuối cùng thì next = bản ghi đầu
+                if (currentPos == totalRows) {
+                    rs.absolute(1);
+                    next = mapResultSetToNews(rs);
+                } else {
+                    rs.absolute(currentPos + 1);
+                    next = mapResultSetToNews(rs);
+                }
+            }
+
             closeResources(rs, ps, conn);
         } catch (Exception e) {
             System.err.println("Lỗi khi lấy tin trước/sau cho id " + id + ": " + e.getMessage());

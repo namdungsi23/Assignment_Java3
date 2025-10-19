@@ -109,24 +109,25 @@ public class HomePageControl extends HttpServlet {
             } else {
                 System.out.println("Danh sách tin tức mới nhất trả về rỗng hoặc null");
             }
-        } else {
-            if (id != null) {
-                News[] newsArr = homeDao.findPrevNext(id);
-                if (newsArr != null && newsArr.length > 0) {
-                    if ("prev".equals(action)) news = newsArr[0];
-                    else if ("next".equals(action)) news = newsArr[1];
-                }
-                request.setAttribute("news", news);
-            } else {
-                news = homeDao.findFirst();
-                if (news != null) {
-                    System.out.println("Hình ảnh tin đầu tiên: " + news.getImage());
-                } else {
-                    System.out.println("Tin đầu tiên trả về null");
-                }
-                request.setAttribute("news", news);
+        } 
+        
+         if(id != null) {
+            News[] newsArr = homeDao.findPrevNext(id);
+            if (newsArr != null && newsArr.length > 0) {
+                if ("prev".equals(action)) news = newsArr[0];
+                else if ("next".equals(action)) news = newsArr[1];
             }
+            request.setAttribute("news", news);
+        } else {
+            news = homeDao.findFirst();
+            if (news != null) {
+                System.out.println("Hình ảnh tin đầu tiên: " + news.getImage());
+            } else {
+                System.out.println("Tin đầu tiên trả về null");
+            }
+            request.setAttribute("news", news);
         }
+
 
         // Truyền danh sách tin tổng hợp
         if (newsList != null) {
@@ -135,8 +136,8 @@ public class HomePageControl extends HttpServlet {
             System.out.println("Danh sách tin tổng hợp trả về null");
         }
 
-
-        request.getRequestDispatcher("/manager/Home.jsp").forward(request, response);
+        request.setAttribute("contentPage", "/manager/Home.jsp");
+        request.getRequestDispatcher("/manager/Home.jsp").include(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
