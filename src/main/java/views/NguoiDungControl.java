@@ -79,8 +79,9 @@ public class NguoiDungControl extends HttpServlet {
         		List<User> users = userDao.findAll();
             request.setAttribute("users", users);
                 
-        		request.getRequestDispatcher("/AdminManger/Nguoidung.jsp").forward(request, response);
-    		    return; 
+            request.setAttribute("contentPage", "/AdminManger/Nguoidung.jsp");
+			request.getRequestDispatcher("/AdminManger/Home.jsp").forward(request, response);
+	        return; 
         }
         
         response.sendRedirect(request.getContextPath() + "/nguoi-dung");

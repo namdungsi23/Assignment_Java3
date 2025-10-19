@@ -43,8 +43,15 @@
     input[type="password"],
     input[type="date"],
     input[type="file"] {
-      width: 300px;
+      width: 100%;
       padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    textarea {
+    	  width: 100%;	
+    	  padding: 5px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
@@ -55,7 +62,12 @@
       width: 350px;
       margin: 10px auto;
     }
-
+	
+	h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+	
     .input-field {
       border: 1px solid #ddd;
       padding: 20px;
@@ -64,11 +76,6 @@
       border-radius: 10px;
       background-color: #f9f9f9;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-
-    .input-field h2 {
-      text-align: center;
-      margin-bottom: 20px;
     }
 
     .form-button {
@@ -80,6 +87,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    
     .form-button:hover {
       background-color: #218838;
     }
@@ -141,6 +149,7 @@
 	          	<form action="${pageContext.request.contextPath}/tin-tuc" method="post" enctype="multipart/form-data">
 				    <input type="hidden" name="action" value="edit">
 				    <input type="hidden" name="id" value="${n.id}">
+				    <input type="hidden" name="scroll" value="true">
 				    <button type="submit">Edit</button>
 				</form>
 	          </td>
@@ -164,7 +173,7 @@
   		
   		<div class="form-group">
 		    <label for="content">Nội dung:</label><br>
-		    <input type="text" id="content" name="content" value="${editedNews!=null ? editedNews.content : ''}">
+		    <textarea id="content" name="content" rows="10" cols="80" >${editedNews!=null ? editedNews.content : ''}</textarea>
   		</div>
   		
   		<div class="form-group">
@@ -198,23 +207,21 @@
           onclick="return confirmAction('create')">Create</button>
   		 <button type="submit" class="form-button" name="action" value="update"
           onclick="return confirmAction('update')">Update</button>
-		<button type="reset" class="form-button">Reset</button>
+		<button type="submit" class="form-button" name="action" value="reset">Reset</button>
 	</form>
 
-	<c:if test="${editedNews != null }">
-		<script>
-			window.onload = function() {
-				document.getElementById("upload-form").scrollIntoView({behavior:"smooth"});
-				document.getElementById("upload-form").focus();
-			}
-			
-		</script>
-	</c:if>
-
+<c:if test="${param.scroll eq 'true'}">
 	<script>
+	    window.onload = function() {
+	        document.getElementById("upload-form").scrollIntoView({ behavior: "smooth" });
+	    }
+	</script>
+</c:if>
+
+<script>
 		function confirmAction(actionType) {
 		  return confirm("Bạn có chắc muốn " + actionType + " bản tin này không?");
 		}
-	</script>
+</script>
 </body>
 </html>

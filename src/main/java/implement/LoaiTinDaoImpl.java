@@ -115,4 +115,29 @@ public class LoaiTinDaoImpl {
         }
         return 0;
     }
+    
+    // 6. Tìm theo tên thể loại
+    public Categories findByCatName(String name) {
+        String sql = "SELECT * FROM Categories WHERE alias = ?";
+        try (
+            Connection conn = JDBC.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+        ) {
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Categories c = new Categories();
+                c.setId(rs.getString("Id"));
+                c.setName(rs.getString("Name"));
+                c.setAlias(rs.getString("Alias"));
+                c.setViewCount(rs.getInt("ViewCount"));
+                c.setFavoriteCount(rs.getInt("FavoriteCount"));
+                c.setActive(rs.getBoolean("IsActive"));
+                return c;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

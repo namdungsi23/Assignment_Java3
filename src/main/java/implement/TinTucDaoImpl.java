@@ -142,4 +142,36 @@ public class TinTucDaoImpl {
         }
         return 0;
     }
+    
+    // 6. Lấy tin theo mã phóng viên
+    public List<News> findByReporterId(String id) {
+        String sql = "SELECT * FROM News WHERE UserId = ?";
+        List<News> newsList = new ArrayList<>();
+        try (
+            Connection conn = JDBC.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+        ) {
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                News n = new News();
+                n.setId(rs.getString("Id"));
+                n.setTitle(rs.getString("Title"));
+                n.setContent(rs.getString("Content"));
+                n.setImage(rs.getString("Image"));
+                n.setPublishedDate(rs.getTimestamp("PublishedDate"));
+                n.setViewCount(rs.getInt("ViewCount"));
+                n.setFavoriteCount(rs.getInt("FavoriteCount"));
+                n.setActive(rs.getBoolean("IsActive"));
+                n.setCategoryId(rs.getString("CategoryId"));
+                n.setUserId(rs.getString("UserId"));
+                newsList.add(n);
+            }
+            return newsList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }

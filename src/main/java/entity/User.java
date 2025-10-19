@@ -8,7 +8,11 @@ public class User {
 	    private String passwordHash;
 	    private String roleId;
 	    private boolean isActive;
-
+	    
+	    public static final String ROLE_ADMIN = "R001";
+	    public static final String ROLE_REPORTER = "R003";
+	    public static final String ROLE_EDITOR = "R002";
+	    
 	    public User() {}
 
 	    public User(String id, String userName, String fullName, String email,

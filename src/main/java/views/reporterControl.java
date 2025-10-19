@@ -5,7 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
+
+import entity.User;
 
 /**
  * Servlet implementation class reporterControl
@@ -27,31 +31,45 @@ public class reporterControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String page = request.getParameter("page");
-        if (page == null) page = "home";
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		
+		if(user!=null) {
+			if(User.ROLE_REPORTER.equals(user.getRoleId().trim())) {
+				String page = request.getParameter("page");
+		        if (page == null) page = "home";
 
-        String file;
-        switch (page) {
-            case "Thongtin":
-                file = "Thongtin.jsp";
-                break;
-            case "Baiviet":
-                file = "baiviet.jsp";
-                break;
-            case "Dangtin":
-                file = "Dangtin.jsp";
-                break;
-            case "Thongke":
-                file = "Thongke.jsp";
-                break;
-            default:
-                file = "Thongtin.jsp"; // 👉 đổi tên khác thay vì Home.jsp để tránh vòng lặp
-        }
+		        String file;
+		        switch (page) {
+		        		case "home": 
+		        			file="/thong-tin";
+		        			break;
+		        			
+		            case "Thongtin":
+		                file = "/thong-tin";
+		                break;
+		            case "Baiviet":
+		                file = "/bai-viet";
+		                break;
+		            case "Dangtin":
+		                file = "/dang-tin";
+		                break;
+		            case "Thongke":
+		                file = "/thong-ke";
+		                break;
+		            default:
+		                file = "/thong-tin"; 
+		        }
 
-       
-        request.setAttribute("contentPage", file);
-        request.getRequestDispatcher("Reporter/PhongvienPage.jsp").forward(request, response);
+		       
+		        request.setAttribute("contentPage", file);
+		        request.getRequestDispatcher("/Reporter/PhongvienPage.jsp").forward(request, response);
+			}
+		}
+			
 	}
+		
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

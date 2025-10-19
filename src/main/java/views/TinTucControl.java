@@ -45,7 +45,7 @@ public class TinTucControl extends HttpServlet {
 		List<News> newsList = newsDao.findAll();
 		request.setAttribute("newsList", newsList);
 		
-		request.getRequestDispatcher("/AdminManger/Tintuc.jsp").forward(request, response);
+		request.getRequestDispatcher("/AdminManger/Tintuc.jsp").include(request, response);
 	}
 
 	/**
@@ -90,15 +90,17 @@ public class TinTucControl extends HttpServlet {
 		news.setFavoriteCount(0);
 		
 		String action = request.getParameter("action");
+		News editedNews = null;
 		switch (action) {
 		    case "edit":
-		        News editedNews = newsDao.findById(id);
+		        editedNews = newsDao.findById(id);
 		        request.setAttribute("editedNews", editedNews);
 		        
 		        List<News> newsList = newsDao.findAll();
 				request.setAttribute("newsList", newsList);
 		        
-				request.getRequestDispatcher("/AdminManger/Tintuc.jsp").forward(request, response);
+				request.setAttribute("contentPage", "/AdminManger/Tintuc.jsp");
+				request.getRequestDispatcher("/AdminManger/Home.jsp").forward(request, response);
 		        return;
 		        
 		    case "create":
@@ -116,9 +118,13 @@ public class TinTucControl extends HttpServlet {
 			        }
 		        newsDao.update(news);
 		        break;
-			        
-		    default:
-		        
+		     
+		    case "reset":
+		    		request.setAttribute("editedNews", editedNews);
+		    		
+		    		break;
+		    		
+		    default:		        
 		        break;
 		}
 		

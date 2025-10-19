@@ -33,7 +33,7 @@ public class Loginpage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//request.getRequestDispatcher("/Account/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/Account/LoginBusiness.jsp").forward(request, response);
 	}
 
 	/**
@@ -48,31 +48,25 @@ public class Loginpage extends HttpServlet {
         User user = dn.login(username, password);
 
         if (user != null) {
-            // Lưu user vào session
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
+            request.getSession().setAttribute("user", user);
+    			switch(user.getRoleId().trim()) {
+	    		    case User.ROLE_ADMIN:
+	    		        response.sendRedirect(request.getContextPath() + "/AdminControl");
+	    		        break;
+	    		    case User.ROLE_EDITOR:
+	    		        response.sendRedirect(request.getContextPath() + "/EditorControl");
+	    		        break;
+	    		    case User.ROLE_REPORTER:
+	    		        response.sendRedirect(request.getContextPath() + "/phongvien");
+	    		        break;
+	    		    default:
+	    		        response.sendRedirect(request.getContextPath() + "/Account/LoginBusiness.jspr?error=role");
+	    		        break;
+    			}
 
-            // Phân quyền dựa theo RoleId
-            switch (user.getRoleId()) {
-                case "R001": // Admin
-                    response.sendRedirect(request.getContextPath() +"/Home.jsp");
-                    break;
-                case "R002":
-                	response.sendRedirect(request.getContextPath() +"/editor.jsp");
-                break;
-                case "R003": // Reporter
-                    response.sendRedirect(request.getContextPath() +"/PhongvienPage.jsp");
-                    break;
-                case "R004": // Reader
-                    response.sendRedirect(request.getContextPath() +"/Reader.jsp");
-                    break;
-                default:
-                    response.sendRedirect(request.getContextPath() + "/Account/login.jsp?error=role");
-                    break;
-            }
         } else {
             request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu!");
-            request.getRequestDispatcher("/Account/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/Account/LoginBusiness.jsp").forward(request, response);
         }
     }
 }

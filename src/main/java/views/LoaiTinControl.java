@@ -74,7 +74,8 @@ public class LoaiTinControl extends HttpServlet {
         		List<Categories> catList = catDao.findAll();
             request.setAttribute("categories", catList);
                 
-        		request.getRequestDispatcher("/AdminManger/Loaitin.jsp").forward(request, response);
+            request.setAttribute("contentPage", "/AdminManger/Loaitin.jsp");
+			request.getRequestDispatcher("/AdminManger/Home.jsp").forward(request, response);
     		    return; 
         }
         

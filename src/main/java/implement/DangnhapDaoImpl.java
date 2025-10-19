@@ -13,7 +13,15 @@ import entity.User;
 public class DangnhapDaoImpl implements DangnhapDao {
 	 @Override
 	    public User login(String username, String password) {
-	        String sql = "SELECT * FROM [Users] WHERE UserName = ? AND PasswordHash = ? AND IsActive = 1";
+	        String sql = """
+	        		    		 SELECT * 
+						FROM [Users] U
+						INNER JOIN [Roles] R ON R.RoleId = U.RoleId
+						WHERE 
+						U.Username = ? AND U.PasswordHash = ? 
+						AND U.IsActive = 1 
+					  	AND R.RoleName IN (N'Admin', N'Editor', N'Reporter')
+	        		""";
 	        try {
 	            ResultSet rs = JDBC.executeQuery(sql, username, password);
 	            if (rs.next()) {
@@ -33,5 +41,7 @@ public class DangnhapDaoImpl implements DangnhapDao {
 	        }
 	        return null;
 	    }
+	 
+	
 	 
 	}

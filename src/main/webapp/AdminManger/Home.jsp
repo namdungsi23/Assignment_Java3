@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Trang quản lí</title>
-</head>
-<body>
 <style>
    body { 
    margin:0;
@@ -32,7 +30,7 @@
     transition: 0.3s; }
     .menu a:hover{
     background-color: #ff9800;    
-  color: #000;                  
+  	color: #000;                  
     }
    .headers {
 	display: flex;
@@ -73,6 +71,9 @@
 }
 </style>
 
+</head>
+
+<body>
 <%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
 <%@ page import="jakarta.servlet.http.Cookie" %>
 
@@ -81,20 +82,6 @@
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     String now = sdf.format(new Date());
 
-<<<<<<< HEAD
-		<!-- Bên phải -->
-		<div class="header-right">
-			<a href="login.jsp">Đăng nhập</a>
-		</div>
-	</div>
-    <div class="menu">
-	    <a href="<%= request.getContextPath() %>/AdminControl?page=home">Quản lý chung</a> 
-	    <a href="<%= request.getContextPath() %>/AdminControl?page=tintuc"> Quản lý Tin tức</a> 
-	    <a href="<%= request.getContextPath() %>/AdminControl?page=Loaitin"> Quản lý Loại tin</a> 
-	    <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung"> Quản lý Người dùng</a> 
-	    <a href="<%= request.getContextPath() %>/AdminControl?page=Newsletter"> Quản lý Newsletter</a>
-	</div>
-=======
     // 🍪 Lấy tên người dùng từ Cookie (nếu có)
     String username = null;
     Cookie[] cookies = request.getCookies();
@@ -120,7 +107,7 @@
         <% if (username != null) { %>
             <span>👋 <%= username %></span>
         <% } else { %>
-            <a href="<%= request.getContextPath() %>/Account/login.jsp">Đăng nhập</a>
+            <a href="<%= request.getContextPath() %>/logout">Đăng xuất</a>
         <% } %>
     </div>
 </div>
@@ -133,11 +120,8 @@
     <a href="<%= request.getContextPath() %>/AdminControl?page=nguoidung">Quản lý Người dùng</a> 
     <a href="<%= request.getContextPath() %>/AdminControl?page=Newsletter">Quản lý Newsletter</a>
 </div>
->>>>>>> 7d2f5ab69b83ae368beb0ce6437b70c311432071
 
 	<c:import url="${contentPage}" />  
-
-
 
 </body>
 </html>

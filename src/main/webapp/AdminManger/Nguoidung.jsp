@@ -43,12 +43,41 @@
       width: 300px;
       padding: 5px;
     }
+    
     .form-group {
       margin-bottom: 15px;
+      text-align: left;
+      width: 350px;
+      margin: 10px auto;
     }
-    button {
+	
+	h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+	
+    .input-field {
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 400px;
+      margin: 30px auto;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .form-button {
       margin-right: 10px;
       padding: 8px 16px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .form-button:hover {
+      background-color: #218838;
     }
 	
   </style>
@@ -65,7 +94,7 @@
 	        <th>Email</th>
 	        <th>Vai trò (Role)</th>
 	        <th>Trạng thái (Status)</th>
-	        <th>Hành động (Action)</th>
+	        <th colspan="2">Hành động (Action)</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -86,7 +115,7 @@
 	            </c:choose>
 	          </td>
 	          <td>
-	          	<form action="${pageContext.request.contextPath}/nguoi-dung" method="post">
+	          	<form action="${pageContext.request.contextPath}/nguoi-dung" method="post" onsubmit="return confirmAction('xóa')">
 				    <input type="hidden" name="action" value="delete">
 				    <input type="hidden" name="id" value="${u.id}">
 				    <button type="submit">Delete</button>
@@ -96,6 +125,7 @@
 	          	<form action="${pageContext.request.contextPath}/nguoi-dung" method="post">
 				    <input type="hidden" name="action" value="edit">
 				    <input type="hidden" name="id" value="${u.id}">
+				    <input type="hidden" name="scroll" value="true">
 				    <button type="submit">Edit</button>
 				</form>
 	          </td>
@@ -106,9 +136,9 @@
   	<br><br>
   	
   	<h2>User Information Form</h2>
-	<form action="${pageContext.request.contextPath}/nguoi-dung" method="post">
+	<form id="upload-form" class="input-field" action="${pageContext.request.contextPath}/nguoi-dung" method="post">
 		<div class="form-group">
-		    <label for="id">ID:</label>
+		    <label for="id">ID:</label><br>
 		    <input type="text" id="id" name="id" value="${editedUser!=null ? editedUser.id : ''}">
 		  </div>
 	
@@ -146,10 +176,23 @@
 			>
 		  </div>
 	
-	  <button type="submit" name="action" value="create">Create</button>
-	  <button type="submit" name="action" value="update">Update</button>
+	  <button type="submit" name="action" value="create" onclick="return confirmAction('tạo mới')">Create</button>
+	  <button type="submit" name="action" value="update" onclick="return confirmAction('cập nhật')">Update</button>
 	  <button type="reset">Reset</button>
 	</form>
+	
+<c:if test="${param.scroll eq 'true'}">
+	<script>
+	    window.onload = function() {
+	        document.getElementById("upload-form").scrollIntoView({ behavior: "smooth" });
+	    }
+	</script>
+</c:if>
 
+<script>
+		function confirmAction(actionType) {
+		  return confirm("Bạn có chắc muốn " + actionType + " người dùng này không?");
+		}
+</script>
 </body>
 </html>

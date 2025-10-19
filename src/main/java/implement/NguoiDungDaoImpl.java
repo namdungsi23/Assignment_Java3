@@ -36,7 +36,6 @@ public class NguoiDungDaoImpl {
         return list;
     }
 
-   
     public User findById(String id) {
         String sql = "SELECT * FROM Users WHERE Id = ?";
         try (

@@ -88,22 +88,22 @@
 
 		<!-- Bên phải -->
 		<div class="header-right">
-			<a href="<%= request.getContextPath() %>/Account/login.jsp">Đăng nhập</a>
+			<a href="<%= request.getContextPath() %>/logout">Đăng xuất</a>
 
 		</div>
 	</div>
     <div class="menu">
-    <a href="<%= request.getContextPath() %>/phongvien?page=Thongtin">Thông tin PV</a> 
+    <a href="<%= request.getContextPath() %>/phongvien?page=Thongtin">Thông tin phóng viên</a> 
     <a href="<%= request.getContextPath() %>/phongvien?page=Baiviet"> Quản lý bài viết</a> 
-    <a href="<%= request.getContextPath() %>/phongvien?page=Dangtin"> Đăng báo</a> 
+    <a href="<%= request.getContextPath() %>/phongvien?page=Dangtin"> Đăng tin</a> 
     <a href="<%= request.getContextPath() %>/phongvien?page=Thongke"> Thống kê</a> 
    
 </div>
 
 <jsp:include page="${contentPage}" />  
 
-<div class="footer">
-        Welcome &lt;Họ và tên&gt;
+	<div class="footer">
+        Welcome ${sessionScope.user.userName}
     </div>
 </body>
 </body>
