@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Danh sách tin Công nghệ</title>
+<title>Danh sách tin Đời sống</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
     .news-item {
@@ -28,7 +28,7 @@
 </style>
 </head>
 <body>
-    <h2>Danh sách các tin Công nghệ</h2>
+    <h2>Danh sách các tin Đời sống</h2>
     <div class="container">
         <c:choose>
             <c:when test="${not empty newsList and not empty newsList}">
@@ -46,7 +46,7 @@
                 </c:forEach>
             </c:when>
             <c:otherwise>
-                <p>Không có tin tức nào trong danh mục Công nghệ.</p>
+                <p>Không có tin tức nào trong danh mục Đời sống.</p>
             </c:otherwise>
         </c:choose>
     </div>
